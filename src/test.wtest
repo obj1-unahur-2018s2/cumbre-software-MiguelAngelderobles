@@ -1,0 +1,66 @@
+import conocimientos.*
+describe{
+		var juana=new Programador()
+		var lucia=new Programador()
+		var mariana=new Especialista()
+		var susana=new Especialista()
+		var argentina= new Pais()
+		var brazil=new Pais()
+		var colombia=new Pais()
+		var coreaDelNorte=new Pais()
+		var coreaDelSur=new Pais()
+		var gerente =new Gerente()
+		var empresa=new Empresa()
+		var chile=new Pais()
+		var peru=new Pais()
+		var japon=new Pais() 
+		
+		fixture{
+			juana.setPais(argentina)
+			juana.setCommits(600)
+			juana.conocimientos(programacionBasica)
+			juana.conocimientos(css)
+			juana.conocimientos(html)
+			lucia.setPais(brazil)
+			lucia.setCommits(800)
+			lucia.conocimientos(programacionBasica)
+			lucia.conocimientos(basesDeDatos)
+			mariana.setPais(argentina)
+			mariana.setCommits(200)
+			mariana.conocimientos(programacionBasica)
+			mariana.conocimientos(instalacionLinux)
+			mariana.conocimientos(objetos)
+			mariana.conocimientos(disenioConObjetos)
+			susana.setPais(colombia)
+			susana.setCommits(1500)
+			susana.conocimientos(programacionBasica)
+			susana.conocimientos(objetos)
+			coreaDelNorte.registrarConflicto(coreaDelSur)
+			coreaDelSur.registrarConflicto(coreaDelNorte)
+			cumbre.registrarIngreso(juana)
+			cumbre.registrarIngreso(lucia)
+			cumbre.registrarIngreso(mariana)
+			gerente.trabajaen(empresa)
+			cumbre. paisesAuspiciantes(argentina)
+			cumbre. paisesAuspiciantes(coreaDelNorte)
+			cumbre.paisesAuspiciantes(colombia)
+		}
+	
+test "testX" {
+	
+	assert.equals([argentina,brazil,argentina],cumbre.paisesParticipantes())
+	assert.equals(2,cumbre.cantParticipantesPais(argentina))
+	cumbre.registrarIngreso(susana)
+	assert.equals(false,cumbre.esRelevante())
+	assert.equals(argentina,cumbre.paisConMasParticipantes())
+	assert.equals(lucia,cumbre.conjDeParticipantesExtranj())
+	assert.equals([brazil],cumbre.conjDeParticipantesExtranj)
+}
+test "gerente empresa"{
+	empresa.addpais(argentina)
+	empresa.addpais(chile)
+	empresa.addpais(peru)
+	empresa.addpais(japon)
+	assert.equals(true,gerente.escape())
+}
+}
